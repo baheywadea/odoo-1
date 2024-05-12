@@ -193,7 +193,7 @@ class Product(models.Model):
             rounding = product.uom_id.rounding
             res[product_id] = {}
             if dates_in_the_past:
-                qty_available = quants_res.get(origin_product_id, [0.0])[0] - moves_in_res_past.get(origin_product_id, 0.0) + moves_out_res_past.get(origin_product_id, 0.0)
+                qty_available = moves_in_res_past.get(origin_product_id, 0.0) - moves_out_res_past.get(origin_product_id, 0.0)
             else:
                 qty_available = quants_res.get(origin_product_id, [0.0])[0]
             reserved_quantity = quants_res.get(origin_product_id, [False, 0.0])[1]
